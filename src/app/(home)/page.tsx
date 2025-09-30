@@ -3,9 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
-interface PageProps {}
-
-const Page: React.FC<PageProps> = () => {
+const Page = () => {
   return (
     <main>
       <div className="w-full flex h-screen flex-col sm:flex-row">
@@ -30,7 +28,7 @@ const Page: React.FC<PageProps> = () => {
             <Link
               href="https://facebook.com/yourprofile"
               target="_blank"
-              rel="noopener  noreferrer"
+              rel="noopener noreferrer"
               className="bd bd-bottom bd-right p-2.5 w-10 block text-center hover:bg-green-signature transition-colors"
             >
               <Facebook size={16} className="mx-auto" />
