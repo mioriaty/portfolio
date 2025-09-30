@@ -13,6 +13,10 @@ const config = {
       }
     },
     extend: {
+      fontFamily: {
+        cormorant: ['var(--font-cormorant)', 'serif'],
+        'fleur-de-leah': ['var(--font-fleur-de-leah)', 'cursive']
+      },
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',

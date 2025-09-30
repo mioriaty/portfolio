@@ -1,12 +1,20 @@
 import { cn } from '@/shared/utils/string';
 import type { Metadata } from 'next';
-import { Cormorant } from 'next/font/google';
+import { Cormorant, Fleur_De_Leah } from 'next/font/google';
 
 import './globals.css';
 
 const cormorant = Cormorant({
   subsets: ['latin'],
-  variable: '--font-cormorant'
+  variable: '--font-cormorant',
+  display: 'swap'
+});
+
+const fleurDeLeah = Fleur_De_Leah({
+  subsets: ['latin'],
+  variable: '--font-fleur-de-leah',
+  weight: '400',
+  display: 'swap'
 });
 
 export const metadata: Metadata = {
@@ -22,7 +30,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn('min-h-screen font-cormorant antialiased', cormorant.variable)}>{children}</body>
+      <body className={cn('min-h-screen font-cormorant antialiased', cormorant.variable, fleurDeLeah.variable)}>
+        {children}
+      </body>
     </html>
   );
 }

@@ -102,12 +102,19 @@
 
 body {
   background-color: rgb(228 225 223 / 1);
+  font-family: var(--font-cormorant), serif;
 }
 
 .green-signature {
-  color: #779e8c;
+  color: #c6af69;
 }
 
 .bg-green-signature {
-  background-color: #779e8c;
+  background-color: #c6af69;
+}
+
+html {
+  font-feature-settings: normal;
+  color: rgb(35 31 31 / var(--tw-text-opacity)) !important;
+  -webkit-text-size-adjust: 100%;
 }
