@@ -4,7 +4,7 @@ export const baseOpenGraph = {
   locale: 'en_US',
   alternateLocale: ['vi_VN'],
   type: 'website',
-  siteName: "It's Duong To ",
+  siteName: "It's Duong To",
   images: [
     {
       url: `${envConfig.NEXT_PUBLIC_URL}/banner.jpeg`
