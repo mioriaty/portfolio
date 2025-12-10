@@ -50,7 +50,7 @@ export function NuoiTaoContent() {
         <div className="bd bd-top w-full py-8 flex items-center justify-center">
           <p className="text-xl uppercase font-semibold">HÃY NUÔI TÔI - MINH BẠCH 300%</p>
         </div>
-        <ProfileImage src="/banner.jpeg" alt="Nuôi Tôi Logo" width="400" height="400" containerClassName="bd bd-top" />
+        <ProfileImage src="/vcb.jpg" alt="Nuôi Tôi Logo" width="400" height="400" containerClassName="bd bd-top" />
         <div className="p-8 bd bd-top">
           <TextBlock title="Cam Kết" subtitle="Sao kê realtime, minh bạch như bụng dưa" />
         </div>
