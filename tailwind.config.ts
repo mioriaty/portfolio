@@ -15,7 +15,8 @@ const config = {
     extend: {
       fontFamily: {
         cormorant: ['var(--font-cormorant)', 'serif'],
-        'fleur-de-leah': ['var(--font-fleur-de-leah)', 'cursive']
+        'fleur-de-leah': ['var(--font-fleur-de-leah)', 'cursive'],
+        inter: ['var(--font-inter)', 'sans-serif']
       },
       colors: {
         border: 'hsl(var(--border))',

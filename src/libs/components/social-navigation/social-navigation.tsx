@@ -28,7 +28,7 @@ export const SocialNavigation = ({ variant = 'desktop', className = '' }: Social
         <Linkedin size={16} className="mx-auto" />
       </Link>
       <Link
-        href="https://www.facebook.com/jin.beo.5"
+        href="https://www.facebook.com/duongwtoo11/"
         target="_blank"
         rel="noopener noreferrer"
         className={`bd bd-bottom bd-right p-2.5 ${linkWidth} block text-center hover:bg-green-signature transition-colors`}

@@ -2,24 +2,21 @@ import { ArrowUpRight } from 'lucide-react';
 
 export function BlogCardLoading() {
   return (
-    <div className="block group px-4 py-6 bg-gray-100 rounded-xl hover:bg-gray-200 transition-colors">
-      <div className="flex justify-between items-start">
-        <div className="space-y-3">
-          <div className="flex items-center gap-2">
-            <div className="text-xs font-medium capitalize text-orange-600">
-              <div className="h-2 w-2 bg-orange-600 rounded-full" />
-            </div>
-          </div>
-          <div className="font-medium text-blue-600">
-            <div className="h-2 w-20 bg-blue-600 rounded-full" />
-          </div>
-          <div className="text-xs text-muted-foreground">
-            <div className="h-2 w-10 bg-gray-400 rounded-full" />
-          </div>
+    <div className="relative block overflow-hidden rounded-3xl border-4 border-black bg-white p-6 shadow-[12px_12px_0_0_#000]">
+      <div className="pointer-events-none absolute -right-10 top-16 hidden h-28 w-28 rotate-12 border-4 border-black bg-[#8ef6e4] opacity-40 lg:block" />
+
+      <div className="relative z-10 flex items-start justify-between gap-3">
+        <div className="h-6 w-28 rounded-full border-2 border-black bg-[#f6ff52] animate-pulse" />
+        <div className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-black bg-black text-white">
+          <ArrowUpRight className="h-5 w-5 animate-pulse" />
         </div>
-        <div className="p-1 rounded-full group-hover:bg-white transition-colors">
-          <ArrowUpRight className="w-4 h-4 text-gray-400 group-hover:text-gray-900" />
-        </div>
+      </div>
+
+      <div className="relative z-10 mt-8 h-8 w-3/4 rounded-md bg-[#ff90e8] opacity-80 animate-pulse" />
+
+      <div className="relative z-10 mt-8 flex items-center justify-between gap-4">
+        <div className="h-8 w-32 rounded-none border-2 border-black bg-[#ffe8d6] shadow-[6px_6px_0_0_#000] animate-pulse" />
+        <div className="h-8 w-24 rounded-full border-2 border-black bg-white shadow-[4px_4px_0_0_#000] animate-pulse" />
       </div>
     </div>
   );
