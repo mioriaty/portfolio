@@ -1,4 +1,5 @@
 import { BlogsList } from '@/features/blogs/blogs-list';
+import { Suspense } from 'react';
 
 export default function PostsPage() {
   return (
@@ -24,7 +25,9 @@ export default function PostsPage() {
 
       <section className="container relative mx-auto mt-16 px-4">
         <div className="grid gap-8 sm:grid-cols-2 xl:grid-cols-3">
-          <BlogsList />
+          <Suspense fallback={<div>Loading blogs...</div>}>
+            <BlogsList />
+          </Suspense>
         </div>
       </section>
     </div>

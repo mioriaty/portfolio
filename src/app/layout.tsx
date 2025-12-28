@@ -5,6 +5,7 @@ import type { Metadata } from 'next';
 import { ThemeProvider as NextThemesProvider } from 'next-themes';
 import { Cormorant, Fleur_De_Leah, Inter } from 'next/font/google';
 import NextjsTopLoader from 'nextjs-toploader';
+import { Suspense } from 'react';
 
 import './globals.css';
 
@@ -52,11 +53,13 @@ export default function RootLayout({
         )}
       >
         <NextjsTopLoader height={2} showSpinner={false} color="hsl(var(--primary))" />
-        <TanstackProvider>
-          <NextThemesProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-            {children}
-          </NextThemesProvider>
-        </TanstackProvider>
+        <Suspense fallback={null}>
+          <TanstackProvider>
+            <NextThemesProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+              {children}
+            </NextThemesProvider>
+          </TanstackProvider>
+        </Suspense>
       </body>
     </html>
   );
