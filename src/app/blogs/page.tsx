@@ -3,33 +3,49 @@ import { Suspense } from 'react';
 
 export default function PostsPage() {
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#f8f5ff] pb-16">
-      <div className="absolute left-8 top-16 hidden h-24 w-24 -rotate-6 border-4 border-black bg-[#ffd15f] shadow-[10px_10px_0_0_#000] md:block" />
-      <div className="absolute -right-24 top-1/3 hidden h-40 w-40 rotate-6 border-4 border-black bg-[#8ef6e4] shadow-[14px_14px_0_0_#000] lg:block" />
-
-      <div className="container relative mx-auto px-4 pt-20">
-        <section className="relative overflow-hidden rounded-3xl border-4 border-black bg-white px-8 py-12 shadow-[16px_16px_0_0_#000] sm:px-12">
-          <div className="absolute -right-6 -top-6 hidden h-24 w-24 rotate-12 border-4 border-black bg-[#ff90e8] shadow-[12px_12px_0_0_#000] sm:block" />
-          <span className="inline-flex items-center gap-2 rounded-full border-2 border-black bg-[#f6ff52] px-4 py-1 text-xs font-black uppercase tracking-[0.25em] text-black">
-            <span className="inline-block h-2 w-2 rounded-full border border-black bg-black" />
-            Blog Studio
-          </span>
-          <h1 className="mt-6 text-4xl font-black uppercase leading-tight text-black sm:text-5xl md:text-6xl">
-            Ideas with an Edge
+    <div className="relative min-h-screen">
+      <div className="container mx-auto max-w-3xl px-6 pt-20 pb-24">
+        {/* Header */}
+        <header className="mb-16 border-b border-[#231f1f]/20 pb-12">
+          <p className="mb-5 text-[10px] uppercase tracking-[0.3em] text-[#c6af69]">Journal</p>
+          <h1 className="font-serif text-5xl font-light leading-tight text-[#231f1f] sm:text-6xl md:text-7xl">
+            Writing &amp; <br />
+            <em>Thinking</em>
           </h1>
-          <p className="mt-6 max-w-2xl text-base font-medium text-neutral-900 sm:text-lg">
-            Bold colors, louder opinions. Explore experiments, breakdowns, and stories from my build-in-public journey.
+          <p className="mt-6 max-w-md text-sm leading-relaxed text-[#231f1f]/50">
+            Fragments of thought, personal essays, and quiet observations from an ongoing journey.
           </p>
-        </section>
-      </div>
+        </header>
 
-      <section className="container relative mx-auto mt-16 px-4">
-        <div className="grid gap-8 sm:grid-cols-2 xl:grid-cols-3">
-          <Suspense fallback={<div>Loading blogs...</div>}>
+        {/* Blog list */}
+        <section>
+          <Suspense
+            fallback={
+              <div className="space-y-0">
+                {Array.from({ length: 6 }).map((_, i) => (
+                  <div
+                    key={i}
+                    className="flex flex-col justify-between border-b border-[#231f1f]/20 py-7 px-1 animate-pulse"
+                  >
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="h-3 w-32 rounded bg-[#231f1f]/10" />
+                      <div className="h-3 w-20 rounded bg-[#231f1f]/10" />
+                    </div>
+                    <div className="mt-3 space-y-2">
+                      <div className="h-5 w-4/5 rounded bg-[#231f1f]/10" />
+                    </div>
+                    <div className="mt-4 flex items-center justify-between">
+                      <div className="h-3 w-16 rounded bg-[#231f1f]/10" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            }
+          >
             <BlogsList />
           </Suspense>
-        </div>
-      </section>
+        </section>
+      </div>
     </div>
   );
 }

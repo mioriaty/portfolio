@@ -12,31 +12,33 @@ export const BlogsList = ({ limit }: { limit?: number }) => {
   const limitedPosts = limit ? posts.slice(0, limit) : posts;
 
   return (
-    <AsyncComponent
-      isError={isError}
-      isLoading={isLoading}
-      isSuccess={isSuccess || isFetched}
-      Loading={Array.from({ length: limit ? 3 : 6 }).map((_, index) => (
-        <BlogCardLoading key={index} />
-      ))}
-      Success={limitedPosts.map((post) => {
-        const title = post.properties.Name.title[0]?.plain_text || 'Untitled';
-        const published_date = post.properties.published_date.date.start;
-        const tags = (post.properties.tags.multi_select?.map((tag: any) => tag.name) || []).join(', ');
-        const id = post.id;
-        const status = post.properties.status.status.name;
+    <div className="flex flex-col">
+      <AsyncComponent
+        isError={isError}
+        isLoading={isLoading}
+        isSuccess={isSuccess || isFetched}
+        Loading={Array.from({ length: limit ? 3 : 6 }).map((_, index) => (
+          <BlogCardLoading key={index} />
+        ))}
+        Success={limitedPosts.map((post) => {
+          const title = post.properties.Name.title[0]?.plain_text || 'Untitled';
+          const published_date = post.properties.published_date.date.start;
+          const tags = (post.properties.tags.multi_select?.map((tag: any) => tag.name) || []).join(', ');
+          const id = post.id;
+          const status = post.properties.status.status.name;
 
-        return (
-          <BlogCard
-            key={post.id}
-            href={`/blogs/${id}`}
-            category={tags}
-            date={published_date}
-            title={title}
-            status={status}
-          />
-        );
-      })}
-    />
+          return (
+            <BlogCard
+              key={post.id}
+              href={`/blogs/${id}`}
+              category={tags}
+              date={published_date}
+              title={title}
+              status={status}
+            />
+          );
+        })}
+      />
+    </div>
   );
 };

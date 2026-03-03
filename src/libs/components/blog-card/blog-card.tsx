@@ -1,6 +1,4 @@
-import { Badge } from '@/libs/components/ui/badge';
 import { cn } from '@/libs/utils/string';
-import { ArrowUpRight, CheckCircle, Clock, Loader } from 'lucide-react';
 import Link from 'next/link';
 import { FC } from 'react';
 
@@ -16,64 +14,64 @@ export const BlogCard: FC<BlogCardProps> = ({ category, date, title, href, statu
   const getStatusStyles = () => {
     switch (status) {
       case 'Not started':
-        return 'bg-[#ffe8d6] text-black';
+        return 'text-[#231f1f]/50';
       case 'In progress':
-        return 'bg-[#ff90e8] text-black';
+        return 'text-amber-800';
       case 'Done':
-        return 'bg-[#cfff6f] text-black';
+        return 'text-[#b09a50]';
       default:
-        return 'bg-white text-black';
+        return 'text-[#231f1f]/50';
     }
   };
 
-  const getStatusIcon = () => {
+  const getStatusLabel = () => {
     switch (status) {
       case 'Not started':
-        return <Clock className="h-4 w-4" />;
+        return 'upcoming';
       case 'In progress':
-        return <Loader className="h-4 w-4 animate-spin" />;
+        return 'in progress';
       case 'Done':
-        return <CheckCircle className="h-4 w-4" />;
+        return 'published';
       default:
-        return <Clock className="h-4 w-4" />;
+        return status?.toLowerCase() || 'draft';
     }
   };
 
-  const normalizedCategory = category ? category.toUpperCase() : 'JOURNAL';
-  const normalizedStatus = status ? status.toUpperCase() : 'STATUS';
+  const normalizedCategory = category || 'journal';
+  const tags = normalizedCategory.split(',').map((t) => t.trim().toLowerCase());
 
   return (
     <Link
       href={href}
-      className="group relative block overflow-hidden rounded-3xl border-4 border-black bg-white p-6 shadow-[12px_12px_0_0_#000] transition-all duration-200 hover:-translate-y-1 hover:translate-x-1 hover:shadow-[16px_16px_0_0_#000]"
+      className="group relative flex flex-col justify-between border-b border-[#231f1f]/20 py-7 transition-all duration-300 hover:bg-[#231f1f]/[0.02] px-1"
     >
-      <div className="pointer-events-none absolute -right-10 top-16 hidden h-28 w-28 rotate-12 border-4 border-black bg-[#8ef6e4] opacity-70 transition-transform duration-200 group-hover:-translate-y-2 group-hover:translate-x-2 lg:block" />
-
-      <div className="relative z-10 flex items-start justify-between gap-3">
-        <span className="inline-flex max-w-[70%] items-center rounded-full border-2 border-black bg-[#f6ff52] px-3 py-1 text-[10px] font-black uppercase tracking-[0.2em] text-black">
-          {normalizedCategory}
-        </span>
-        <div className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-black bg-black text-white transition-transform duration-200 group-hover:-translate-y-1 group-hover:translate-x-1">
-          <ArrowUpRight className="h-5 w-5 transition-transform duration-200 group-hover:rotate-12" />
+      {/* Top row: tags + date */}
+      <div className="flex items-start justify-between gap-4">
+        <div className="flex flex-wrap gap-2">
+          {tags.map((tag, i) => (
+            <span key={i} className="text-[10px] uppercase tracking-[0.18em] text-[#231f1f]/70 font-semibold">
+              {tag}
+              {i < tags.length - 1 && <span className="ml-2 text-[#231f1f]/40">·</span>}
+            </span>
+          ))}
         </div>
+        <span className="shrink-0 text-[10px] tracking-[0.12em] text-[#231f1f]/60 tabular-nums font-medium">
+          {date}
+        </span>
       </div>
 
-      <h3 className="relative z-10 mt-8 text-2xl font-black uppercase leading-tight text-black">
-        <span className="box-decoration-clone bg-[#ff90e8] px-1 text-black">{title}</span>
+      {/* Title */}
+      <h3 className="mt-3 font-serif text-xl font-semibold leading-snug text-[#231f1f] transition-colors duration-200 group-hover:text-[#c6af69] sm:text-2xl">
+        {title}
       </h3>
 
-      <div className="relative z-10 mt-8 flex items-center justify-between gap-4">
-        <Badge
-          className={cn(
-            'flex items-center gap-2 rounded-none border-2 border-black px-3 py-1 text-[11px] font-black uppercase tracking-[0.2em] shadow-[6px_6px_0_0_#000] transition-transform duration-200 group-hover:-translate-y-1 group-hover:translate-x-1',
-            getStatusStyles()
-          )}
-        >
-          {getStatusIcon()}
-          {normalizedStatus}
-        </Badge>
-        <span className="rounded-full border-2 border-black bg-white px-3 py-1 text-xs font-black uppercase tracking-[0.2em] text-black shadow-[4px_4px_0_0_#000]">
-          {date}
+      {/* Bottom row: status + arrow */}
+      <div className="mt-4 flex items-center justify-between">
+        <span className={cn('text-[10px] uppercase tracking-[0.18em] italic font-medium', getStatusStyles())}>
+          {getStatusLabel()}
+        </span>
+        <span className="text-xs text-[#231f1f]/50 transition-all duration-200 group-hover:translate-x-1 group-hover:text-[#c6af69]">
+          →
         </span>
       </div>
     </Link>
